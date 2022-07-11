@@ -1,12 +1,10 @@
 function test() {
-  let arr = [1, 2, 3, 4, 2, 3]
-  let set = new Set(arr);
+  let myMap = new Map();
 
-  set.add(5)
-  set.add(2)
-  set.add("hui")
+  myMap.set("Sofia", 500);
+  myMap.set("Varna", 500);
 
-  console.log(set);
 
+  console.log(myMap);
 }
 test();
