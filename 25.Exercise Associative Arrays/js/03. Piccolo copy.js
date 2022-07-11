@@ -1,43 +1,28 @@
 function piccolo(input) {
-
-  let parkingLotArr = [];
+  let parkingLotObj = {};
 
   for (const commandLine of input) {
     let[command, carNum] = commandLine.split(", ");
-
-    switch (command) {
-
-      case "IN":
-        parkingLotArr.push(carNum)
-      break;
-
-      case "OUT":
-        if (parkingLotArr. includes(carNum)) {
-          let index = parkingLotArr.indexOf(carNum);
-          parkingLotArr.splice(index, 1);
-        }
-      break;
-
-    }
-
+      parkingLotObj[carNum] = command;
   }
 
+  let entries = Object.entries(parkingLotObj);
+  let filteredEntries = entries.filter(el => el[1] === "IN");
 
-  if (parkingLotArr.length !== 0) {  
-    parkingLotArr.sort( (a, b) => 
-      slicer(a) - slicer(b)
-    );
+  if (filteredEntries.length) {
+    
+    filteredEntries.sort();
 
-    for (const iterator of parkingLotArr) {
-      console.log(iterator);
+    for (const [carNum, direction] of filteredEntries) {
+      console.log(carNum);
     }
   } 
-  else { 
+  else {
     console.log("Parking Lot is Empty");
   }
 
+
   function slicer(str) { return +str.slice(2,6) }
-  
 }
 piccolo([
   "IN, CA2844AA",
@@ -51,3 +36,5 @@ piccolo([
   "IN, CA9876HH",
   "IN, CA2822UU",
 ]);
+
+piccolo(["IN, CA2844AA", "IN, CA1234TA", "OUT, CA2844AA", "OUT, CA1234TA"]);

@@ -17,14 +17,15 @@ function partyTime(input) {
   }
 
   // оставям само гостите, които не са дошли
-  let peopleNotComingList = JSON.parse(JSON.stringify(list));
+  let notComingList = JSON.parse(JSON.stringify(list));
+
   for (index++; index < input.length; index++) {
     guestComing = input[index];
-    delete peopleNotComingList[guestComing];
+    delete notComingList[guestComing];
   }
 
-  // проверявам тези, които не са дошли дали са на списъка.
-  for (const key in peopleNotComingList) {
+  // проверявам тези, които не са дошли дали фигурират в  списъка.
+  for (const key in notComingList) {
     let isOnList = false;
     for (const guest in list) {
       if (guest === key) {
@@ -32,15 +33,15 @@ function partyTime(input) {
       }
     }
     if (!isOnList) {
-      delete peopleNotComingList[key];
+      delete notComingList[key];
     }
   }
 
 
 
-  let entries = Object.entries(peopleNotComingList);
+  let entries = Object.entries(notComingList);
   let sortedList = entries.sort( ([keyA, valueA], [keyB, valueB]) =>
-    valueA - (valueB)
+    (valueA) - (valueB)
   );
 
   console.log(sortedList.length);

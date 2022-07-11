@@ -1,17 +1,12 @@
 function test() {
+  let arr = [1, 2, 3, 4, 2, 3]
+  let set = new Set(arr);
 
-  let obj = {};
+  set.add(5)
+  set.add(2)
+  set.add("hui")
 
-  obj.Ivan = ["2C, 4H, 9H"];
-
-  let newDraw = ["JD, JD"];
-
-  for (const iterator of newDraw) {
-    console.log(iterator);
-  }
-  obj["Ivan"].push += [...newDraw]
-
-  console.log(obj.Ivan);
+  console.log(set);
 
 }
 test();
