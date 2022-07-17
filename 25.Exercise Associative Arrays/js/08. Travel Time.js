@@ -11,16 +11,13 @@ function travelTime(input) {
       townsMap.set(town, cost)
       travel.set(country, townsMap)
     }
-
+    
     else {
       if ( travel.get(country).has(town) ) {        // има ли такъв град
-
+        
         if (cost < travel.get(country).get(town)) { // по-ниска ли е цената
-          travel.get(country, townsMap.set(town, cost));
-
           console.log("LOWER COST!!");
-          // travel.get(country, townsMap.set(town, cost));
-          console.log(town, cost);
+          travel.get(country, townsMap.set(town, cost));
         }
       }
       else { // ако няма такъв град
@@ -29,7 +26,6 @@ function travelTime(input) {
     }
 
   }
-  
 
   console.table(travel);
 
@@ -45,9 +41,9 @@ function travelTime(input) {
 travelTime([
   "Bulgaria > Sofia > 500",
   "Bulgaria > Sopot > 800",
-  "Bulgaria > Sliven > 900",
-  "France > Paris > 2000",
   "Albania > Tirana > 1000",
+  "France > Paris > 2000",
+  // "Bulgaria > Sliven > 900",
   "Bulgaria > Sofia > 200",
   "Bulgaria > Sofia > 300",
 ]);
