@@ -1,24 +1,48 @@
 function garage(input) {
-  let garage = {};
+  let garageObj = {};
 
-  for (let iterator of input) {
-    iterator = iterator.split(" - ");
-    let garageNumber = iterator.shift();
+  for (const commandLine of input) {
+    let tokens = commandLine.split(" - ");
+    let garageNum = Number(tokens.shift());
+    let carsInfo = tokens;
 
-    for (const carInfoIterator of iterator) {
-      let carInfo = carInfoIterator.split(", ")
+    if (!garageObj.hasOwnProperty(garageNum)) {
+      garageObj[garageNum] = [];
+    }
 
-      for (const info of carInfo) {
-        let[key, value] = info.split(": ");
+    for (const carInfo of carsInfo) {
+      let carInfoObj = {};
+      for (const carProperties of carInfo.split(", ")) {
+        let [key, value] = carProperties.split(": ");
+        carInfoObj[key] = value;
+      }
 
-        console.log(garageNumber + " | " + key + " | " + value);
-        let obj = {};
-        obj[key] = value;
-        garage[garageNumber]= obj;
+      garageObj[garageNum].push(carInfoObj)
+    }
+    
+  }
+
+  print(garageObj);
+
+
+  function print(garageObj) {
+    for (const [garageNumber, garageInfo] of Object.entries(garageObj)) {
+      console.log(`Garage № ${garageNumber}`);
+
+      for (const iterator of garageInfo) {
+        let entries = Object.entries(iterator)
+        let printArr = [];
+
+        for (const [k, v] of entries) {
+          let printLine = k + " - " + v;
+          printArr.push(printLine);
+        }
+
+        console.log(`--- ${printArr.join(", ")}`);
       }
     }
   }
-    console.table(garage);
+
 }
 garage([
   "1 - color: blue, fuel type: diesel",
