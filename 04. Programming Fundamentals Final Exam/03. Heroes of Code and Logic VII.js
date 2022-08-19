@@ -97,6 +97,7 @@ function heroesOfCodeAndLogic(input) {
     console.log('  ' + `MP: ${partyObj[hero].mana}`);
   }
 
+  console.table(partyObj);
 }
 heroesOfCodeAndLogic([
   "2",
