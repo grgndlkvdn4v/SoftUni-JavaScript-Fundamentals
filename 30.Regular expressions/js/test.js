@@ -5,13 +5,14 @@ function test() {
   let c = a > b ? a : b;
   console.log(c);
 
-
-  for (let i = 10; i > 3; i -= 2) {
-    console.log(i);
-  }
+  // for (let i = 10; i > 3; i -= 2) {
+  //   console.log(i);
+  // }
 
 }
+
 test();
+
 
 function printText(text) {
     console.log("I love" + text);
